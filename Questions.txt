@@ -1,0 +1,3 @@
+-Is that an issue that a lot of cells are not (well) selected
+-Why is cytoplasm2 and nuclei results that close ? Is that because since the images only contains nuclei and then the program react correclty
+-Why are masks saved as .tif ? Aren't they just matrices ?
