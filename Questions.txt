@@ -1,3 +1,7 @@
 -Is that an issue that a lot of cells are not (well) selected
+
 -Why is cytoplasm2 and nuclei results that close ? Is that because since the images only contains nuclei and then the program react correclty
+-Is it true that the cellpose segment only cytoplasme or cytoplasme+nuclei, Is that okay in our case to use it for only yhe nuclei ?
+
 -Why are masks saved as .tif ? Aren't they just matrices ?
+
