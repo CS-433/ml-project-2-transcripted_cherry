@@ -1,0 +1,5 @@
+-Learn to work with google collab to get more computation power
+
+-Understand and create function that matchs a feature (as a matrix ?) and the mask matrix to obtain feature for a particular nuclei
+-Try to see if storing only matrices instead of images is saving any space
+
