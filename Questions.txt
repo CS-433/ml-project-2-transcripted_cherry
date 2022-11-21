@@ -6,3 +6,4 @@
 -Why are masks saved as .tif ? Aren't they just matrices ?
 - is everything that is in the folder relevant or can we concentrate on the images only?
 - According to the ppt there are about 502 transcription factors, but in the folder there are just 25, should we just do it for them?
+- Size?
