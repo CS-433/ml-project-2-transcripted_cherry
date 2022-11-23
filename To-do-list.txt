@@ -14,7 +14,10 @@ Task 1: Find relationship between nuclear size and expression level for each ind
 Task 2: 
 - Classify different types of nuclear signal localisation 
 - Find position of nuclear signal based on Y-Pet signal
-- Find features for classifying: E.g. mean value, contrast, degree of colocalisation with DNA (Cherry signal), e.g. with PCA
-. Classify with unsupervised classification (e.g. Clustering, principal component analysis ect.). 
+- Find features for classifying: E.g. mean value, contrast, degree of colocalisation with DNA (Cherry signal) -> create M x N matrix where M = TF, N: features
+    - Apply PCA to those features to extract the ones that vary the most
+. Classify with unsupervised classification 
+    - Clustering
+
 . If we have time left: Classify with supervised classification (e.g. k nearest neighbour, decision trees such as random forest, logistic regression) -> we first have to   generate training data by classifying some nucleaus manually according to signal localisation (such as smooth, granular, stratied, with puncti, close to nuclear         membrane) 
 
