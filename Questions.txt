@@ -1,9 +1,0 @@
--Is that an issue that a lot of cells are not (well) selected
-
--Why is cytoplasm2 and nuclei results that close ? Is that because since the images only contains nuclei and then the program react correclty
--Is it true that the cellpose segment only cytoplasme or cytoplasme+nuclei, Is that okay in our case to use it for only yhe nuclei ?
-
--Why are masks saved as .tif ? Aren't they just matrices ?
-- is everything that is in the folder relevant or can we concentrate on the images only?
-- According to the ppt there are about 502 transcription factors, but in the folder there are just 25, should we just do it for them?
-- Size?
