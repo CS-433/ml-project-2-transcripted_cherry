@@ -11,7 +11,7 @@ Task 1: Find relationship between nuclear size and expression level for each ind
 - maybe try also ridge regression
 - Compare across different transcription factors
 - Compare which feature (sum/mean/etc) would be best for the regression (maybe combination)
-- Try with not only one image, does regression change 
+- Try with not only one image, does regression change (Alexis)
 
 Task 2: 
 - Classify different types of nuclear signal localisation 
