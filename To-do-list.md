@@ -7,9 +7,11 @@
 
 Task 1: Find relationship between nuclear size and expression level for each individual transcription factor
 - get rid of blurred parts in the image (Tamara tries variance of laplacian filter)
-- polynomial feature expansion and cross correlation
+- polynomial feature expansion and cross validation 
 - maybe try also ridge regression
 - Compare across different transcription factors
+- Compare which feature (sum/mean/etc) would be best for the regression (maybe combination)
+- Try with not only one image, does regression change 
 
 Task 2: 
 - Classify different types of nuclear signal localisation 
