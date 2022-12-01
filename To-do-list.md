@@ -6,8 +6,8 @@
 -In the end creating a pipeline for one small folder containing one TF and solving the first part
 
 Task 1: Find relationship between nuclear size and expression level for each individual transcription factor
-- get rid of blurred parts in the image (Tamara tries variance of laplacian filter)
-- polynomial feature expansion and cross validation 
+- get rid of blurred parts in the image (Tamara tries variance of laplacian filter) -> maybe done, discuss next time.
+- polynomial feature expansion and cross validation (Tamara)
 - maybe try also ridge regression
 - Compare across different transcription factors
 - Compare which feature (sum/mean/etc) would be best for the regression (maybe combination)
