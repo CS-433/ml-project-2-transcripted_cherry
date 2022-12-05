@@ -1,4 +1,4 @@
--Learn to work with google collab to get more computation power   __Done, it indeed goes much faster, but we might have some issues with big files__  
+-Learn to work with google collab to get more computation power   __Done, it indeed goes much faster, insanely faster with the right optimizations, but we might have some issues with big files__  
 
 -Create function that matchs a feature (as a matrix ?) and the mask matrix to obtain feature for a particular nuclei
 -Try to see if storing only matrices instead of images is saving any space
