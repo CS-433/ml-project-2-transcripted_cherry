@@ -19,11 +19,14 @@ In order to give the most flexibility to anyone that would need to re use our co
 This part is extensively described in the report that can be found on this github.
 
 ### Code
-The code is mainly planned to run for a specific TF, which name (and file path) has to be defined at the top of the file. If it is used with a global feautre file that contains the data for different TF at once, the expected behavior can be retrieved quite easily thanks to the column _TF_name_. Some parameters such as the $alpha$ grid (for ridge regression) and the $degrees$ grid that are tested can be also be found in a top cell that contains parameters. \
+The code is mainly planned to run for a specific TF, which name (and file path) has to be defined at the top of the file. If it is used with a global feature file that contains the data for different TF at once, the expected behavior can be retrieved quite easily thanks to the column _TF_name_. Some parameters such as the $alpha$ grid (for ridge regression) and the $degrees$ grid that are tested can be also be found in a top cell that contains parameters. \
 Then the code runs both linear regression and ridge regression with the grids defined above, and then select the best model according to the lowest error coming from the crossvalidation. The error used is the mean squarred error that the crossvalidation is trying to minimize in the test set.
 
 ## Task 2
 
+Since the task 2 consisted mainly in unsupervised learning, it's first using PCA to reduce the dimensionality of the data (2 if one wants to visualize the results), and then KMEANS, aiming that multiple datapoints of a same TF will cluster together and show that 2 TF are indeed different. This is especially planned to be usefull to make some clusters of multiple TF, tring to pack some of them in one class. \
+The normalization if also becoming more important since it will help to keep the PCA number reasonnable and not going to high or too low. This normalization is done according to each TF since most of the features (such as intensies) are not comparable between TF and might mainly come from technical issues/differences. \
+One should then choose a good number of clusters according to the number of TF he is using, and what visualization looks like. 
 
 
 
