@@ -4,6 +4,21 @@ ML4sciences project with the SUTER LAB about transcription factors!
 
 [Overleaf report link](https://www.overleaf.com/project/6396e543351e79205bde5cb8)
 
+# Setup for the code.
+The code will need several packages to run each tasks and the colab notebook. The colab notebook already contains the lines required to install the packages not present un the basic colab environment, and also one specific package version required (scikit-image not updated to last version on the basic environment when we did the project).
+The packages needed for tasks 1 and 2 are:
+- [numpy](https://numpy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [matplotlib](https://matplotlib.org/)
+- [scipy](https://scipy.org/)
+- [seaborn](https://seaborn.pydata.org/)
+- [re](https://docs.python.org/3/library/re.html)
+- [sklearn](https://scikit-learn.org/stable/)
+- [skimage](https://scikit-image.org/)
+- [warnings](https://docs.python.org/3/library/warnings.html)
+- [math](https://docs.python.org/3/library/math.html)
+- [cv2 from openCV](https://pypi.org/project/opencv-python/)
+
 # Code organization:
 
 ## Feature processing
