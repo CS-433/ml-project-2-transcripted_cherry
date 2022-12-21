@@ -7,17 +7,17 @@ ML4sciences project with the SUTER LAB about transcription factors!
 # Setup for the code.
 The code will need several packages to run each tasks and the colab notebook. The colab notebook already contains the lines required to install the packages not present un the basic colab environment, and also one specific package version required (scikit-image not updated to last version on the basic environment when we did the project).
 The packages needed for tasks 1 and 2 are:
-- [numpy](https://numpy.org/)
-- [pandas](https://pandas.pydata.org/)
-- [matplotlib](https://matplotlib.org/)
-- [scipy](https://scipy.org/)
-- [seaborn](https://seaborn.pydata.org/)
+- [numpy](https://numpy.org/) (1.23.4)
+- [pandas](https://pandas.pydata.org/) (1.5.2)
+- [matplotlib](https://matplotlib.org/) (3.6.2)
+- [scipy](https://scipy.org/) (1.9.3)
+- [seaborn](https://seaborn.pydata.org/) (0.12.1)
 - [re](https://docs.python.org/3/library/re.html)
-- [sklearn](https://scikit-learn.org/stable/)
-- [skimage](https://scikit-image.org/)
+- [sklearn](https://scikit-learn.org/stable/) (1.1.3)
+- [skimage](https://scikit-image.org/) (0.19.3)
 - [warnings](https://docs.python.org/3/library/warnings.html)
 - [math](https://docs.python.org/3/library/math.html)
-- [cv2 from openCV](https://pypi.org/project/opencv-python/)
+- [cv2 from openCV](https://pypi.org/project/opencv-python/) (4.6.0)
 
 # Code organization:
 
