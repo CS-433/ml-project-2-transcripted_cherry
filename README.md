@@ -15,7 +15,6 @@ The packages needed for tasks 1 and 2 are:
 - [re](https://docs.python.org/3/library/re.html)
 - [sklearn](https://scikit-learn.org/stable/) (1.1.3)
 - [skimage](https://scikit-image.org/) (0.19.3)
-- [warnings](https://docs.python.org/3/library/warnings.html)
 - [math](https://docs.python.org/3/library/math.html)
 - [cv2 from openCV](https://pypi.org/project/opencv-python/) (4.6.0)
 
