@@ -24,7 +24,7 @@ Based on an image with cell expressing H2B-mCherry (mCherry = red fluorescent pr
 The github page is organized in four folders:
 -	Jupyter notebooks: contains three files: feature_generation, Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in Chapters 1-4.
 -	Collab_Notebooks: contains one file that can be run in google collab. 
--	Images/task1: Contains plots produced in Task_1.ipynb. If save = True, images are saved in this folder when running the program
+-	Images: Contains plots produced in different Jupyter_notebook files. If `Save = True`, images are saved in this folder when running the program. Images are either at the format .png or .pdf.
 -	Features: Contains all the features generated for this project in .csv files.  
 
 # Jupyter Notebooks organization:
@@ -37,7 +37,7 @@ There are two possibilities on how and which files should be imported. The two p
 Choosing the mode can be done by following the instructions of the program. 
 
 The generated features as well as their meaning can be taken from the report. For further use there can also be taken other or more features into account.
-The calculation of one transcription factor of xxx pictures takes around 1.5 hours to run using standard GPU from google Collab. 
+The calculation of one transcription factor of 12 pictures(usually $1$ whole TF) takes around 1.5 hours to run using standard GPU from google Collab. 
 
 ## Preprocessing:
 There is an individual preprocessing step in both files Task_1.ipynb and Task_2.ipynb. This allows an optimization of the preprocessing parameters for each task. 
@@ -111,9 +111,9 @@ Task_2.ipynb contains the preprocessing step described above and a pipeline for 
 If `n_components` is set to two, a plot is provided to visualize the results of the classification.
 
 #### Specific processing steps:
-In order to select the best number of PCA components, a so called Elbow plot is made, which consists in computing which of the PCA components can explain which proportion of the variance of the data. If one can see an 'Elbow' on it, a sudden fast decrease, then it should be considered to take the `n_components` equal to the number of components each explaining a reasonable amount of the variance. \
+In order to select the best number of PCA components, a so called Elbow plot is made, which consists in computing which of the PCA components can explain which proportion of the variance of the data. If one can see an 'Elbow' on it, a sudden fast decrease, then it should be considered to take the `n_components` equal to the number of components each explaining a reasonable amount of the variance. 
 
-Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing with the number of clusters but remains helpful to help choosing `N_clusters`. \
+Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing with the number of clusters but remains helpful to help choosing `N_clusters`. 
 
 
 
