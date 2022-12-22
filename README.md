@@ -1,6 +1,6 @@
 ### ml-project-2-transcripted_cherry
 
-ML4sciences project with the SUTER LAB about transcription factors!
+ML4sciences project with the UPSUTER LAB about transcription factors!
 
 # Setup for the code.
 The code will need several packages to run each tasks and the colab notebook. The colab notebook already contains the lines required to install the packages not present un the basic colab environment, and also one specific package version required (scikit-image not updated to last version on the basic environment when we did the project).
@@ -20,8 +20,8 @@ The packages needed for tasks 1 and 2 are:
 
 Based on an image with cell expressing H2B-mCherry (mCherry = red fluorescent protein) and an image in which a given transcription factor fused to Ypet (= yellow fluorescent protein) is expressed a pipeline is provided to generate features for each nucleus detected in the images as well as for two different tasks. One task giving a pipeline for a regression between nuclear size and an expression level and the second task for classifying the different nuclei according to their subnuclear localization as well as their associating with the DNA (computed by the co-localization with H2B-mCherry).
 The github page is organized in four folders:
--	Jupyter notebooks: contains three files: feature_generation, Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in the next chapter.
--	Collab_Notebooks: contains one file that can be run in google collab. 
+-	Jupyter notebooks: contains three files: Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in the next chapter.
+-	Collab_Notebooks: contains one file that can be run in google collab as well as locally. 
 -	Images: Contains plots produced in different Jupyter_notebook files. If `Save = True`, images are saved in this folder when running the program. Images are either at the format .png or .pdf.
 -	Features: Contains all the features generated for this project in .csv files.  
 
