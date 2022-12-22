@@ -115,7 +115,7 @@ In order to select the best number of PCA components, a so called Elbow plot is 
 
 Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing(from our experiment) with the number of clusters but remains helpful to help choosing `N_clusters`. 
 
-
+To represent the quality of the model, we show a double entry dataframe with how many points from each TF in each cluster, as well as a coefficient representing how well the most representative cluster of a TF indeed represent it well. 
 
 
 
