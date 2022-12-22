@@ -20,14 +20,14 @@ The packages needed for tasks 1 and 2 are:
 
 Based on an image with cell expressing H2B-mCherry (mCherry = red fluorescent protein) and an image in which a given transcription factor fused to Ypet (= yellow fluorescent protein) is expressed a pipeline is provided to generate features for each nucleus detected in the images as well as for two different tasks. One task giving a pipeline for a regression between nuclear size and an expression level and the second task for classifying the different nuclei according to their subnuclear localization as well as their associating with the DNA (computed by the co-localization with H2B-mCherry).
 The github page is organized in four folders:
--	Jupyter notebooks: contains three files: Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in the next chapter.
+-	Jupyter notebooks: contains two files: Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in the next chapter.
 -	Collab_Notebooks: contains one file that can be run in google collab as well as locally. 
 -	Images: Contains plots produced in different Jupyter_notebook files. If `Save = True`, images are saved in this folder when running the program. Images are either at the format .png or .pdf.
 -	Features: Contains all the features generated for this project in .csv files.  
 
 # Jupyter Notebooks organization:
 ## Feature generation
-Feature generation is the first step and ran on TexasRed-channel images representing cell line and the corresponding Ypet-channel images. The code is provided as a google collab file as well as a Jupiter notebook file. This allows running the code on google collab as well as locally. 
+Feature generation is the first step and ran on TexasRed-channel images representing cell line and the corresponding Ypet-channel images. The code is provided as a Jupiter notebook file that should be run on google colab, but can be run locally as well.
 
 There are two possibilities on how and which files should be imported. The two possibilities are:
 -	Deciding manually which transcription factor should be analysed.
