@@ -68,10 +68,10 @@ The filtering contains a removal step for rows based on blurness as well as on s
 -	`take_log`: a boolean value indicating whether the log of certain columns should be taken (True) or not (False).
 -	`columns_log`: a list of column names for which the log should be taken if `take_log` is True. Needs a preanalyzation of the columns, recommended for columns that show a skewed distribution.
 #### Filtering bad detected nuclei:
--	`Remove_blur_lapl`: a boolean value indicating whether the blurred nuclei detected by the Laplacian should be removed (True) or not (False)
--	`Remove_blur_lapl_treshold`: Integer value that defines the threshold. Rows that contain a blur value for the Laplacian below this threshold are removed.
+-	`remove_blur_lapl`: a boolean value indicating whether the blurred nuclei detected by the Laplacian should be removed (True) or not (False)
+-	`remove_blur_lapl_treshold`: Integer value that defines the threshold. Rows that contain a blur value for the Laplacian below this threshold are removed.
 -	`remove_blur_ski`: a boolean value indicating whether the blurred nuclei detected based on the discrimination level of blur should be removed (True) or not (False)
--	`Remove_blur_lapl_treshold`: Value between 0 and 1. Values below this threshold are removed. 
+-	`remove_blur_lapl_treshold`: Value between 0 and 1. Values below this threshold are removed. 
 -	`remove_similarity`: a boolean value indicating whether the nuclei with a certain similarity level should be removed or not. 
 -	`similarity_threshold`: a Value between 0 and 1. Values below this threshold are removed.
 
@@ -113,7 +113,7 @@ If `n_components` is set to two, a plot is provided to visualize the results of 
 #### Specific processing steps:
 In order to select the best number of PCA components, a so called Elbow plot is made, which consists in computing which of the PCA components can explain which proportion of the variance of the data. If one can see an 'Elbow' on it, a sudden fast decrease, then it should be considered to take the `n_components` equal to the number of components each explaining a reasonable amount of the variance. 
 
-Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing with the number of clusters but remains helpful to help choosing `N_clusters`. 
+Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing(from our experiment) with the number of clusters but remains helpful to help choosing `N_clusters`. 
 
 
 
