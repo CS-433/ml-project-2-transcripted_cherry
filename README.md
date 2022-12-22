@@ -18,41 +18,94 @@ The packages needed for tasks 1 and 2 are:
 - [math](https://docs.python.org/3/library/math.html)
 - [cv2 from openCV](https://pypi.org/project/opencv-python/) (4.6.0)
 
-# Code organization:
+# Github organization
 
-## Feature processing
-The feature processign is done using the google colab jupyter notebook, since we need the GPU to compute faster the nucleus segmentation. Inside it all the feature that are mentionned in the .pdf report we wrote. If used on colab it should be quite straight forward to adapt to anyone. The only part that one should take care of if the data importation from a google drive, that should be in the right folder, and adapt also the output folder name and end of file name to be coherent with what has been computed.
-This file takes quite a long to run and has been the main issue that prevented us to run it for the 750+ TF's. Using standard GPU from google colab, it takes for one TF arround $1.5$ hours to run, using most of the time for the feature computation that are occuring over big images and so pixels.
+Based on an image with cell expressing H2B-mCherry (mCherry = red fluorescent protein) and an image in which a given transcription factor fused to Ypet (= yellow fluorescent protein) is expressed a pipeline is provided to generate features for each nucleus detected in the images as well as for two different tasks. One task giving a pipeline for a regression between nuclear size and an expression level and the second task for classifying the different nuclei according to their subnuclear localization as well as their associating with the DNA (computed by the co-localization with H2B-mCherry).
+The github page is organized in four folders:
+-	Jupyter notebooks: contains three files: feature_generation, Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in Chapters 1-4.
+-	Collab_Notebooks: contains one file that can be run in google collab. 
+-	Images/task1: Contains plots produced in Task_1.ipynb. If save = True, images are saved in this folder when running the program
+-	Features: Contains all the features generated for this project in .csv files.  
 
-## Data preprocessing (post feature calculation)
-In order to give the most flexibility to anyone that would need to re use our codes and stuff, we did as little as possible preprocessing before the feature saving. Then when one will import these features in the Task_1.ipynb and Task_2.ipynb files, data preprocessing (pre-analysis) will need to be done. Since this one might be different between the two tasks, especially since a restrained number of features are used in the task 1, and globally the features are not used in the same way. The data preprocessing is then detailed below. Both globally contains possibility for __Outliers removal__, __Normalization__ and __log transformation__.
+# Jupyter Notebooks organization:
+## Feature generation
+Feature generation is the first step and ran on TexasRed-channel images representing cell line and the corresponding Ypet-channel images. The code is provided as a google collab file as well as a Jupiter notebook file. This allows running the code on google collab as well as locally. 
 
-## Task 1
+There are two possibilities on how and which files should be imported. The two possibilities are:
+-	Deciding manually which transcription factor should be analysed.
+-	Analysing the content of a whole folder
+Choosing the mode can be done by following the instructions of the program. 
 
-### Data preprocessing of task 1
-This part is extensively described in the report that can be found on this github.
+The generated features as well as their meaning can be taken from the report. For further use there can also be taken other or more features into account.
+The calculation of one transcription factor of xxx pictures takes around 1.5 hours to run using standard GPU from google Collab. 
 
-### Code
-The code is mainly planned to run for a specific TF, which name (and file path) has to be defined at the top of the file. If it is used with a global feature file that contains the data for different TF at once, the expected behavior can be retrieved quite easily thanks to the column _TF_name_. Some parameters such as the $alpha$ grid (for ridge regression) and the $degrees$ grid that are tested can be also be found in a top cell that contains parameters. \
-Then the code runs both linear regression and ridge regression with the grids defined above, and then select the best model according to the lowest error coming from the crossvalidation. The error used is the mean squarred error that the crossvalidation is trying to minimize in the test set.
+## Preprocessing:
+There is an individual preprocessing step in both files Task_1.ipynb and Task_2.ipynb. This allows an optimization of the preprocessing parameters for each task. 
 
-## Task 2
+During the preprocessing step outlier removal,  log transformation, z-score normalization as well as a step to get rid of bad detected or blurred values can be used. For each possible step the feature-columns that undergo this transformation have to be specified.
+•	Outlier removal
+The outlier_removal function removes outliers from a dataframe based on the specified parameters. It can either remove outliers depending on the interquartile range or based on a specific quantile.
+•	Z-score normalization
+The normalization function uses Z-score normalization in specified columns of a dataframe. 
+•	Log-Transformation
+The log-Transformation takes the logarithm in the specified columns of a dataframe, which can reduce the skewness. 
+•	Filtering bad detected nuclei:  The filtering contains a removal step for rows based on blurness as well as on similarity. 
 
-Since the task 2 consisted mainly in unsupervised learning, it's first using PCA to reduce the dimensionality of the data (2 if one wants to visualize the results), and then KMEANS, aiming that multiple datapoints of a same TF will cluster together and show that 2 TF are indeed different. This is especially planned to be usefull to make some clusters of multiple TF, tring to pack some of them in one class. \
-The normalization if also becoming more important since it will help to keep the PCA number reasonnable and not going to high or too low. This normalization is done according to each TF since most of the features (such as intensies) are not comparable between TF and might mainly come from technical issues/differences. \
-One should then choose a good number of clusters according to the number of TF he is using, and what visualization looks like. 
 
 
+### Parameters to adapt:
+#### Outlier removal:
+-	outlier: a boolean value indicating whether outliers should be removed (True) or not (False).
+-	interquantile: a boolean value indicating whether outliers should be removed based on the interquantile range (True) or based on a specific quantile (False).
+-	quantile_keep: a value between 0 and 1. Is only applied if interquantile is False. Specifies the quantile up to which values should be kept, e.g. 0.85: 85% of smallest points are kept.
+-	outlier_range: only considered if interquantile is True. This value is used to define the range for outlier removal. It is multiplied with the interquantile range.
+-	outlier_columns: a list of column names in which outliers should be removed.
+#### Normalization:
+-	normalization: a boolean value indicating whether the data should be normalized (True) or not (False).
+-	columns_to_be_normalized: a list of column names that should be normalized.
+#### Log-Transformation:
+-	take_log: a boolean value indicating whether the log of certain columns should be taken (True) or not (False).
+-	columns_log: a list of column names for which the log should be taken if take_log is True. Needs a preanalyzation of the columns, recommended for columns that show a skewed distribution.
+#### Filtering bad detected nuclei:
+-	Remove_blur_lapl: a boolean value indicating whether the blurred nuclei detected by the Laplacian should be removed (True) or not (False)
+-	Remove_blur_lapl_treshold: Integer value that defines the threshold. Rows that contain a blur value for the Laplacian below this threshold are removed.
+-	remove_blur_ski a boolean value indicating whether the blurred nuclei detected based on the discrimination level of blur should be removed (True) or not (False)
+-	Remove_blur_lapl_treshold: Value between 0 and 1. Values below this threshold are removed. 
+-	remove_similarity: a boolean value indicating whether the nuclei with a certain similarity level should be removed or not. 
+-	similarity_threshold: a Value between 0 and 1. Values below this threshold are removed.
 
-## Discussion point: 
-We're not sure how the measurement was made. In order for our result to be true the measurement distance to the measurement plate has to stay constant-> size scale is constant over different images
-## Discussion (shouldn't be here at the end)
-- Nucleus might be overlayed
-- We did normalize each image by the mean. 
-- We could have normalized within each image, if this makes more sens for biologists. With this we assume that the mean across different pictures of same TF is the same. This is plausible since we have many nucleis in one image.
-- We assume that expression level is fully measured by Ypet that is within the 'mask' of nucleus. Maybe it could also diffuce outwards
-- Some cells might not be fully round -> the size we see is not equal to the actual size
+## Task_1:
 
-## Further improvement
-Check if model imrpoves by using other segmentation methods such as watershed 
+Task_1.ipynb contains in addition to the preprocessing step mentioned above, a pipeline for data analyzation and the application of regression models. 
+
+During the analyzation part, features are explored with scatterplots.
+
+A ridge regression and linear regression is built using cross validation where the best suited degree for a polynomial feature expansion is determined automatically. The test error (MAE or MSE) of the best ridge regression model and best linear regression model are compared and the better performing model is chosen. This process is implemented in two ways:
+-	Applies a 2D-regression, that gives back the best model of a parameter from the list X_features with the smallest mean absolute error, as well as the polynomial degree and the R^2-model achieved by the model (Chapter 3 in file).
+-	Applies a 2D or ND-Regression and gives back the best parameters. It also visualizes the results in case the a 2D-Regression was applied (Chapter 4 in file).
+The X_features and decide_y_feature can be defined in both chapters individually. The decide_x_feature can just be adapted in the chapter 4.
+
+Parameters to adapt in the Beginning of the chapter:
+•	maxdegree: An integer value indicating up to which level the polynomial feature expansion should be tested.
+•	alphas: A list containing five possible alpha values for ridge regression, which controls the strength of the regularization. For all five alpha values a cross validation is applied, giving back the alpha resulting in the smallest error. 
+•	K: An integer value for the cross-validation, indicating how many sets of train/ test data should be computed.
+•	X_features: A list containing all the features that are interesting for the regression
+•	Decide_y_feature: A string with the y-value for the regression
+•	Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
+•	Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
+•	save: a Boolean value indicating if the plots should be saved in the folder images/task_1 or not.
+•	mode_error: “mean_squared_error” or “mean_absolute_value” depending on which loss function should be applied.
+
+Remark: If a csv-file containing multiple transcription factors is read, an extraction of a subdata containing only one transcription factor has to be done. Otherwise, the model will compute the relationship of an aggregated set of transcription factors. The method to extract the subdata is listed in the notebook.
+
+## Task_2:
+Task_2.ipynb contains the preprocessing step described above and a pipeline for an unsupervised classification of different transcription factors. After applying a principal component analysis (PCA) the summarized features are clustered using a Kmean-classification algorithm.
+
+Parameters to be defined: 
+•	n_components: An integer value that defines into how many features the original dataset should be summarized to during PCA.
+•	Pca_excluded: A list of columns that should be excluded in the PCA. It contains all the feature that should not be used for the classification task.
+•	Random_state: an integer value that is used as an input for the Kmeans algorithm to determine the random number generation for the centroid initialization.
+•	N_clusters: An integer number that the number of clusters
+
+If n_components is set to two, a plot is provided to visualize the results of the classification.
 
