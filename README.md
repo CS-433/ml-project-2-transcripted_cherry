@@ -43,13 +43,13 @@ The calculation of one transcription factor of xxx pictures takes around 1.5 hou
 There is an individual preprocessing step in both files Task_1.ipynb and Task_2.ipynb. This allows an optimization of the preprocessing parameters for each task. 
 
 During the preprocessing step outlier removal,  log transformation, z-score normalization as well as a step to get rid of bad detected or blurred values can be used. For each possible step the feature-columns that undergo this transformation have to be specified.
-•	Outlier removal
+#### Outlier removal
 The outlier_removal function removes outliers from a dataframe based on the specified parameters. It can either remove outliers depending on the interquartile range or based on a specific quantile.
-•	Z-score normalization
+#### Z-score normalization
 The normalization function uses Z-score normalization in specified columns of a dataframe. 
-•	Log-Transformation
+#### Log-Transformation
 The log-Transformation takes the logarithm in the specified columns of a dataframe, which can reduce the skewness. 
-•	Filtering bad detected nuclei:  The filtering contains a removal step for rows based on blurness as well as on similarity. 
+#### Filtering bad detected nuclei:  The filtering contains a removal step for rows based on blurness as well as on similarity. 
 
 
 
@@ -85,27 +85,27 @@ A ridge regression and linear regression is built using cross validation where t
 -	Applies a 2D or ND-Regression and gives back the best parameters. It also visualizes the results in case the a 2D-Regression was applied (Chapter 4 in file).
 The X_features and decide_y_feature can be defined in both chapters individually. The decide_x_feature can just be adapted in the chapter 4.
 
-Parameters to adapt in the Beginning of the chapter:
-•	maxdegree: An integer value indicating up to which level the polynomial feature expansion should be tested.
-•	alphas: A list containing five possible alpha values for ridge regression, which controls the strength of the regularization. For all five alpha values a cross validation is applied, giving back the alpha resulting in the smallest error. 
-•	K: An integer value for the cross-validation, indicating how many sets of train/ test data should be computed.
-•	X_features: A list containing all the features that are interesting for the regression
-•	Decide_y_feature: A string with the y-value for the regression
-•	Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
-•	Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
-•	save: a Boolean value indicating if the plots should be saved in the folder images/task_1 or not.
-•	mode_error: “mean_squared_error” or “mean_absolute_value” depending on which loss function should be applied.
+#### Parameters to adapt in the Beginning of the chapter:
+- maxdegree: An integer value indicating up to which level the polynomial feature expansion should be tested.
+- alphas: A list containing five possible alpha values for ridge regression, which controls the strength of the regularization. For all five alpha values a cross validation is applied, giving back the alpha resulting in the smallest error. 
+- K: An integer value for the cross-validation, indicating how many sets of train/ test data should be computed.
+- X_features: A list containing all the features that are interesting for the regression
+- Decide_y_feature: A string with the y-value for the regression
+- Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
+- Decide_x_feature: An array containing the indices of the X_feature vector to be chosen. Can have multiple or just one index. 
+- save: a Boolean value indicating if the plots should be saved in the folder images/task_1 or not.
+- mode_error: “mean_squared_error” or “mean_absolute_value” depending on which loss function should be applied.
 
 Remark: If a csv-file containing multiple transcription factors is read, an extraction of a subdata containing only one transcription factor has to be done. Otherwise, the model will compute the relationship of an aggregated set of transcription factors. The method to extract the subdata is listed in the notebook.
 
 ## Task_2:
 Task_2.ipynb contains the preprocessing step described above and a pipeline for an unsupervised classification of different transcription factors. After applying a principal component analysis (PCA) the summarized features are clustered using a Kmean-classification algorithm.
 
-Parameters to be defined: 
-•	n_components: An integer value that defines into how many features the original dataset should be summarized to during PCA.
-•	Pca_excluded: A list of columns that should be excluded in the PCA. It contains all the feature that should not be used for the classification task.
-•	Random_state: an integer value that is used as an input for the Kmeans algorithm to determine the random number generation for the centroid initialization.
-•	N_clusters: An integer number that the number of clusters
+#### Parameters to be defined: 
+- n_components: An integer value that defines into how many features the original dataset should be summarized to during PCA.
+- Pca_excluded: A list of columns that should be excluded in the PCA. It contains all the feature that should not be used for the classification task.
+- Random_state: an integer value that is used as an input for the Kmeans algorithm to determine the random number generation for the centroid initialization.
+- N_clusters: An integer number that the number of clusters
 
 If n_components is set to two, a plot is provided to visualize the results of the classification.
 
