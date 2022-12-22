@@ -2,8 +2,6 @@
 
 ML4sciences project with the SUTER LAB about transcription factors!
 
-[Overleaf report link](https://www.overleaf.com/project/6396e543351e79205bde5cb8)
-
 # Setup for the code.
 The code will need several packages to run each tasks and the colab notebook. The colab notebook already contains the lines required to install the packages not present un the basic colab environment, and also one specific package version required (scikit-image not updated to last version on the basic environment when we did the project).
 The packages needed for tasks 1 and 2 are:
@@ -22,7 +20,7 @@ The packages needed for tasks 1 and 2 are:
 
 Based on an image with cell expressing H2B-mCherry (mCherry = red fluorescent protein) and an image in which a given transcription factor fused to Ypet (= yellow fluorescent protein) is expressed a pipeline is provided to generate features for each nucleus detected in the images as well as for two different tasks. One task giving a pipeline for a regression between nuclear size and an expression level and the second task for classifying the different nuclei according to their subnuclear localization as well as their associating with the DNA (computed by the co-localization with H2B-mCherry).
 The github page is organized in four folders:
--	Jupyter notebooks: contains three files: feature_generation, Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in Chapters 1-4.
+-	Jupyter notebooks: contains three files: feature_generation, Task_1.ipynb, Task_2.ipynb. The notebooks are further explained in the next chapter.
 -	Collab_Notebooks: contains one file that can be run in google collab. 
 -	Images: Contains plots produced in different Jupyter_notebook files. If `Save = True`, images are saved in this folder when running the program. Images are either at the format .png or .pdf.
 -	Features: Contains all the features generated for this project in .csv files.  
@@ -41,6 +39,7 @@ The calculation of one transcription factor of 12 pictures(usually $1$ whole TF)
 
 ## Preprocessing:
 There is an individual preprocessing step in both files Task_1.ipynb and Task_2.ipynb. This allows an optimization of the preprocessing parameters for each task. 
+Note: If there are many columns for which outlier removal should be applied to, a lot of datapoints are filtered out because not all outliers occur in the same feature.
 
 During the preprocessing step outlier removal,  log transformation, z-score normalization as well as a step to get rid of bad detected or blurred values can be used. For each possible step the feature-columns that undergo this transformation have to be specified.
 ### Outlier removal
@@ -81,10 +80,9 @@ Task_1.ipynb contains in addition to the preprocessing step mentioned above, a p
 
 During the analyzation part, features are explored with scatterplots.
 
-A ridge regression and linear regression is built using cross validation where the best suited degree for a polynomial feature expansion is determined automatically. The test error (MAE or MSE) of the best ridge regression model and best linear regression model are compared and the better performing model is chosen. This process is implemented in two ways:
--	Applies a 2D-regression, that gives back the best model of a parameter from the list `X_features` with the smallest mean absolute error, as well as the polynomial degree and the R^2-model achieved by the model (Chapter 3 in file).
--	Applies a 2D or ND-Regression and gives back the best parameters. It also visualizes the results in case the a 2D-Regression was applied (Chapter 4 in file).
-The `X_features` and `decide_y_feature` can be defined in both chapters individually. The `decide_x_feature` can just be adapted in the chapter 4.
+A ridge regression and linear regression is built using cross validation where the best suited degree for a polynomial feature expansion is determined automatically. The test error (MAE or MSE) of the best ridge regression model and best linear regression model are compared and the better performing model is chosen. 
+A 2D or ND-Regression is applied which gives back the best parameters. It also visualizes the results in case the a 2D-Regression was applied.
+The `X_features` and `decide_y_feature` can be defined in both chapters individually. The `decide_x_feature` can just be adapted.
 
 #### Parameters to adapt in the Beginning of the chapter:
 - `maxdegree`: An integer value indicating up to which level the polynomial feature expansion should be tested.
@@ -93,8 +91,6 @@ The `X_features` and `decide_y_feature` can be defined in both chapters individu
 - `X_features`: A list containing all the features that are interesting for the regression
 - `Decide_y_feature`: A string with the y-value for the regression
 - `Decide_x_feature`: An array containing the indices of the `X_feature` vector to be chosen. Can have multiple or just one index. 
-- `Decide_x_feature`: An array containing the indices of the `X_feature` vector to be chosen. Can have multiple or just one index. 
-- `save`: a Boolean value indicating if the plots should be saved in the folder images/task_1 or not.
 - `mode_error`: “mean_squared_error” or “mean_absolute_value” depending on which loss function should be applied.
 
 Remark: If a csv-file containing multiple transcription factors is read, an extraction of a subdata containing only one transcription factor has to be done. Otherwise, the model will compute the relationship of an aggregated set of transcription factors. The method to extract the subdata is listed in the notebook.
