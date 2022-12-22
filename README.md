@@ -82,9 +82,9 @@ Task_1.ipynb contains in addition to the preprocessing step mentioned above, a p
 During the analyzation part, features are explored with scatterplots.
 
 A ridge regression and linear regression is built using cross validation where the best suited degree for a polynomial feature expansion is determined automatically. The test error (MAE or MSE) of the best ridge regression model and best linear regression model are compared and the better performing model is chosen. This process is implemented in two ways:
--	Applies a 2D-regression, that gives back the best model of a parameter from the list X_features with the smallest mean absolute error, as well as the polynomial degree and the R^2-model achieved by the model (Chapter 3 in file).
+-	Applies a 2D-regression, that gives back the best model of a parameter from the list `X_features` with the smallest mean absolute error, as well as the polynomial degree and the R^2-model achieved by the model (Chapter 3 in file).
 -	Applies a 2D or ND-Regression and gives back the best parameters. It also visualizes the results in case the a 2D-Regression was applied (Chapter 4 in file).
-The X_features and decide_y_feature can be defined in both chapters individually. The decide_x_feature can just be adapted in the chapter 4.
+The `X_features` and `decide_y_feature` can be defined in both chapters individually. The `decide_x_feature` can just be adapted in the chapter 4.
 
 #### Parameters to adapt in the Beginning of the chapter:
 - `maxdegree`: An integer value indicating up to which level the polynomial feature expansion should be tested.
