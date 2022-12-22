@@ -110,3 +110,18 @@ Task_2.ipynb contains the preprocessing step described above and a pipeline for 
 
 If `n_components` is set to two, a plot is provided to visualize the results of the classification.
 
+#### Specific processing steps:
+In order to select the best number of PCA components, a so called Elbow plot is made, which consists in computing which of the PCA components can explain which proportion of the variance of the data. If one can see an 'Elbow' on it, a sudden fast decrease, then it should be considered to take the `n_components` equal to the number of components each explaining a reasonable amount of the variance. \
+
+Then to assess the quality of the clustering, we use the `sklearn silhouette_score` function, which is a metric using the distance between and intra clusters. The best value is $1$ and the worst is $-1$. It is always decreasing with the number of clusters but remains helpful to help choosing `N_clusters`. \
+
+
+
+
+
+
+
+
+
+
+
